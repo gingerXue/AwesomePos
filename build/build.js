@@ -1,19 +1,27 @@
 'use strict'
+//调用检测版本的文件，因为使用node和npm版本需要求的，因为check-versions.js是exports出一个函数，所以可以直接（）调用
 require('./check-versions')()
 
+//全局环境变量的设置  因为bundle.js是打的生成包,所以参数是production
 process.env.NODE_ENV = 'production'
-
+// loading 插件，可以在npm run build时看到loading
 const ora = require('ora')
+//删除命令，每次打包前会将上次打包的文件删除
 const rm = require('rimraf')
+//node.js中自带的文件路径工具
 const path = require('path')
+//在命令行中输出带颜色的文字
 const chalk = require('chalk')
-const webpack = require('webpack')
-const config = require('../config')
-const webpackConfig = require('./webpack.prod.conf')
 
+const webpack = require('webpack')
+//引入../config/index.js，也就是项目中的一些配置变量，只引入文件夹，是因为会自动去该文件夹下找index.js
+const config = require('../config')
+//引入生产包的配置
+const webpackConfig = require('./webpack.prod.conf')
+//日志输出插件，会在命令行中显示loading效果，并输出提示
 const spinner = ora('building for production...')
 spinner.start()
-
+// 删除上次编译生成过的文件（递归删除）
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {

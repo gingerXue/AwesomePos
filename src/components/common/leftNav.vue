@@ -3,7 +3,10 @@
     <ul>
       <li>
         <i class="icon iconfont icon-jinrudianpu"></i>
-        <div>店铺</div>
+        <div>
+          店铺
+<!--          <router-link to="/hello">店铺</router-link>-->
+        </div>
       </li>
       <li>
         <i class="icon iconfont icon-hanbao"></i>

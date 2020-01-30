@@ -1,9 +1,13 @@
 'use strict'
+// node自带的文件路径工具
 const path = require('path')
+// 工具函数集合
 const utils = require('./utils')
+// 引用配置文件，config文件夹下的index.js
 const config = require('../config')
+// 工具函数集合
 const vueLoaderConfig = require('./vue-loader.conf')
-
+//这个函数是说目录回退到该文件绝对路径的上一级，也就是根目录下
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -25,14 +29,19 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
+    // 编译输出的静态资源根路径，可以在config文件夹下的index.js下build函数中看到，会生成dist文件夹
     path: config.build.assetsRoot,
+    // 编译输出的文件名
     filename: '[name].js',
+    // 正式发布环境下编译输出的上线路径的根路径
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  //关于我们在代码中require或者import文件的相关配置
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    //提供一些别名，例如在router.js中的引入
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -42,16 +51,22 @@ module.exports = {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
+        // 处理 vue文件
+        // https://github.com/vuejs/vue-loader
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
       {
+        // 编译 js
+        // https://github.com/babel/babel-loader
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
+        // 处理图片文件
+        // https://github.com/webpack-contrib/url-loader
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -68,6 +83,7 @@ module.exports = {
         }
       },
       {
+        // 处理字体文件
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {

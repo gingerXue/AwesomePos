@@ -80,6 +80,14 @@
         </a>
       </li>
     </ul>
+    <div class="routerLearn">
+      <span>首页：<router-link to="/">首页</router-link></span>
+      <span>hello：<router-link to="/hello">hello</router-link></span>
+      <span>--hello1：<router-link to="/hello/hello1">hello1</router-link></span>
+      <span>--hello2：<router-link to="/hello/hello2">hello2</router-link></span>
+    </div>
+
+    <router-view class="aaa"></router-view>
   </div>
 </template>
 
@@ -109,5 +117,10 @@ li {
 }
 a {
   color: #42b983;
+}
+.routerLearn{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
 }
 </style>
