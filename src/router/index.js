@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import pos from '../components/page/pos'
 import hello from '../components/page/HelloWorld'
-import helloOne from '../components/page/helloOne'
-import helloTwo from '../components/page/helloTWo'
+// import helloOne from '../components/page/helloOne'
+// import helloTwo from '../components/page/helloTWo'
 
 Vue.use(Router)
 
 /* eslint-disable */
-export default new Router({
+/*export default new Router({
   routes: [
     {                 // 每一个链接都是一个对象
       path: '/',      // 链接路径
@@ -21,9 +21,22 @@ export default new Router({
       component: hello,
       children:[
         {path:'/',component:hello},
-        {path:'hello1',component:helloOne},
-        {path:'hello2',component:helloTwo},
+        {path:'hello1',name:'hello1',component:helloOne},
+        {path:'hello2',name:'hello2',component:helloTwo},
       ]
+    }
+  ]
+})*/
+export default new Router({
+  routes:[
+    {
+      path:'/',
+      name:'welcome',
+      component:hello
+    },{
+      path:'/pos',
+      name:'pos',
+      component:pos
     }
   ]
 })

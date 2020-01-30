@@ -83,8 +83,8 @@
     <div class="routerLearn">
       <span>首页：<router-link to="/">首页</router-link></span>
       <span>hello：<router-link to="/hello">hello</router-link></span>
-      <span>--hello1：<router-link to="/hello/hello1">hello1</router-link></span>
-      <span>--hello2：<router-link to="/hello/hello2">hello2</router-link></span>
+<!--      <span>&#45;&#45;hello1：<router-link :to="{name:'hello1',params:{username:'xuejz'}}">hello1</router-link></span>-->
+<!--      <span>&#45;&#45;hello2：<router-link :to="{name:'hello2',params:{username:'xuejz2'}}">hello2</router-link></span>-->
     </div>
 
     <router-view class="aaa"></router-view>
