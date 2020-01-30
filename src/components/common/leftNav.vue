@@ -1,7 +1,6 @@
 <template>
   <div class="leftNav">
     <ul>
-<!--       @click="check(index)" :class="{active:selectIndex===index}"-->
       <li :key="item.id" v-for="item in chooseItem" @click="check(item.id)" :class="{active:selectIndex==item.id}">
         <router-link class="router-link" tag="div" :to="item.to">
           <i :class="item.icon"></i>
