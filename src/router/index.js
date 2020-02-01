@@ -9,21 +9,19 @@ Vue.use(Router)
 
 /* eslint-disable */
 /*export default new Router({
-  routes: [
-    {                 // 每一个链接都是一个对象
-      path: '/',      // 链接路径
-      name: 'pos',    // 路由名称，
-      component: pos  // 对应的组件模板
-    },
+  routes:[
     {
-      path: '/hello',
-      name: 'hello',
-      component: hello,
+      path:'/',
+      name:'welcome',
+      component:hello,
       children:[
-        {path:'/',component:hello},
         {path:'hello1',name:'hello1',component:helloOne},
-        {path:'hello2',name:'hello2',component:helloTwo},
+        {path:'hello2',name:'hello2',component:helloTwo}
       ]
+    },{
+      path:'/pos',
+      name:'pos',
+      component:pos
     }
   ]
 })*/
